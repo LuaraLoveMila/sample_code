@@ -1,0 +1,10 @@
+# export system variable
+export PATH=/Users/lhu/Library/Python/2.7/bin:$PATH
+
+# customize shell prompt like user:dir
+export PS1="\u:\w $ "
+
+source ~/workspace/venv/bin/activate
+
+# kill existing process automatically --> ssh tunnel --> copy bdp password
+alias ssh_bdp="lsof -i tcp:1087 | grep ssh | awk '{print \$2}' | xargs kill; ssh -p 20002 -D 1087 -CfNg lhu@ec2-dca-a8k-p-bdpops-1.appannie.org; echo 'PWD' | pbcopy"
